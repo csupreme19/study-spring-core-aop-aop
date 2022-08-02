@@ -30,12 +30,16 @@ public class AspectV3 {
     public Object doTransaction(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object result = null;
         try {
+            // @Before
             log.info("[트랜잭션 시작] {}", proceedingJoinPoint.getSignature());
             result = proceedingJoinPoint.proceed();
+            // @AfterReturning
             log.info("[트랜잭션 종료] {}", proceedingJoinPoint.getSignature());
         } catch (Exception e) {
+            // @AfterThrowing
             log.info("[트랜잭션 롤백] {}", proceedingJoinPoint.getSignature());
         } finally {
+            // @After
             log.info("[리소스 릴리즈] {}", proceedingJoinPoint.getSignature());
         }
         return result;

@@ -13,7 +13,7 @@ public class OrderService {
 
     public void orderItem(String itemId) {
         log.info("[orderService] 실행");
-        orderRepository.save(itemId);
+        String result = orderRepository.save(itemId);
     }
 
 }
