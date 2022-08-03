@@ -11,9 +11,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 @Slf4j
-@Import({AtAnnotationTests.AtAnnotationAspect.class})
+@Import({BeanTests.BeanAspect.class})
 @SpringBootTest
-public class AtAnnotationTests {
+public class BeanTests {
 
     @Autowired
     MemberService memberService;
@@ -26,14 +26,12 @@ public class AtAnnotationTests {
 
     @Slf4j
     @Aspect
-    static class AtAnnotationAspect {
-
-        @Around("@annotation(com.hello.aop.member.annotation.MethodAop)")
-        public Object doAtAnnotation(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-            log.info("[@annotation] {}", proceedingJoinPoint.getSignature());
+    static class BeanAspect {
+        @Around("bean(*Service*)")  // bean의 이름이 확정적일 때 사용한다.
+        public Object doBean(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+            log.info("[bean] {}", proceedingJoinPoint.getSignature());
             return proceedingJoinPoint.proceed();
         }
-
     }
 
 }
