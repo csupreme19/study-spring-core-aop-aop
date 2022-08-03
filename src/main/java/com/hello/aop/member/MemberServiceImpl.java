@@ -4,12 +4,12 @@ import com.hello.aop.member.annotation.ClassAop;
 import com.hello.aop.member.annotation.MethodAop;
 import org.springframework.stereotype.Component;
 
-@ClassAop
+@ClassAop("test class value")
 @Component
 public class MemberServiceImpl implements MemberService {
 
     @Override
-    @MethodAop("test value")
+    @MethodAop("test method value")
     public String hello(String param) {
         return "ok";
     }

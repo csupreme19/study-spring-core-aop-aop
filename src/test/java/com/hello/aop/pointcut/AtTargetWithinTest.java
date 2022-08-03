@@ -41,12 +41,11 @@ public class AtTargetWithinTest {
         public void parentMethod() {}
     }
 
-    @ClassAop
+    @ClassAop("")
     static class Child extends Parent {
         public void childMethod() {}
     }
 
-    @Slf4j
     @Aspect
     static class AtTargetWithinAspect {
 

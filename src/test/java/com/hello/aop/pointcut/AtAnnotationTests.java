@@ -24,10 +24,10 @@ public class AtAnnotationTests {
         memberService.hello("helloA");
     }
 
-    @Slf4j
     @Aspect
     static class AtAnnotationAspect {
 
+        // 애너테이션이 있는 메서드를 매칭한다.
         @Around("@annotation(com.hello.aop.member.annotation.MethodAop)")
         public Object doAtAnnotation(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
             log.info("[@annotation] {}", proceedingJoinPoint.getSignature());
