@@ -17,18 +17,10 @@ public class WithinTests {
     AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
 
     Method helloMethod;
-    Method internalMethod;
 
     @BeforeEach
     void setUp() throws NoSuchMethodException {
         helloMethod = MemberServiceImpl.class.getMethod("hello", String.class);
-        internalMethod = MemberServiceImpl.class.getMethod("internal", String.class);
-    }
-
-    @Test
-    void printMethodTest() {
-        // public java.lang.String com.hello.aop.member.MemberServiceImpl.hello(java.lang.String)
-        log.info("helloMethod={}", helloMethod);
     }
 
     @Test
